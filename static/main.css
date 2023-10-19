@@ -1,0 +1,45 @@
+body {
+    overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.background-1 {
+    background-image: url('{% static 'img/bg1.png' %}');
+    /* Additional styles for background 1 */
+}
+
+.background-2 {
+    background-image: url('{% static 'img/bg2.png' %}');
+    /* Additional styles for background 2 */
+}
+@media (max-width: 768px) {
+    /* Styles for smaller screens */
+}
+@media (max-width: 576px) {
+    .fixed-button1 button {
+        width: 100%;
+        position: relative;
+    }
+}
+
+@media (min-width: 576px) {
+    .fixed-button1 button {
+        float: right;
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.background-1, .background-2 {
+    animation: fadeIn 1s forwards;
+}
+/* Add these styles for the fixed button */
+
+.fixed-button1 {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}

@@ -1,0 +1,15 @@
+<!-- custom_panel/templates/custom_panel/clientdata_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Data</title>
+</head>
+<body>
+    <h1>Client Data</h1>
+    <ul>
+        {% for data in clientdata %}
+            <li>{{ data.name }} - {{ data.phone }} - {{ data.city }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

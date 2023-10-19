@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+    {% load static %}
+    <style>
+        .btn-secondary {
+            position: fixed;
+            z-index: 1000;
+            bottom: 5px;
+            right: 5px;
+            margin: 0;
+            padding: 5px 3px;
+            width: 100%;
+            height: 80px;
+            background-color: red;
+        }
+
+        /* Form Styles */
+        #form {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 0 20%;
+        }
+
+        #form label {
+            color: black;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #form .form-group {
+            margin-bottom: 15px;
+        }
+
+        #form .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #form button {
+            width: calc(100% - 20px);
+        }
+
+        .background-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+    {% for image in images %}
+    <div class="background-1">
+        <img src="{{ image.image_file.url }}" alt="{{ image.name }}" class="background-img">
+    </div>
+    {% endfor %}
+    
+    <div style="background-color: rgb(255, 255, 255);" class="container" id="form">
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">Name</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+                        {{ form.phone }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.city.id_for_label }}">City</label>
+                        {{ form.city }}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: black;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            {% for image in images %}
+            <div class="background-1">
+                <img src="{{ image.image_file.url }}" alt="{{ image.name }}" class="background-img">
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <footer>
+        <div class="fixed-button1">
+            <button class="btn btn-secondary" style="background-color: black;" onclick="scrollToForm()">Contact Us</button>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (optional, if needed) -->
+    <script>
+        function scrollToForm() {
+            const formElement = document.getElementById('form');
+            const formPosition = formElement.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const offset = formPosition - (windowHeight / 2);
+            window.scrollBy({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#confirm_button').click(function() {
+                // Perform actions when confirmed
+                console.log('Confirmed');
+            });
+
+            $('#cancel_button').click(function() {
+                // Perform actions when canceled
+                console.log('Canceled');
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block object-tools %}
+    <div id="object-tools" class="submit-row">
+        <input type="submit" value="Save" class="default" name="_save">
+        <button type="button" id="confirm_button">Confirm</button>
+        <button type="button" id="cancel_button">Cancel</button>
+    </div>
+{% endblock %}
